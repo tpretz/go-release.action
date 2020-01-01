@@ -19,14 +19,14 @@ if [ $GOOS == 'windows' ]; then
 fi
 
 # tar cvfz tmp.tgz "${PROJECT_NAME}${EXT}"
-CHECKSUM=$(md5sum ${PROJECT_NAME}-${VERSION}-${GOOS}${EXT} | cut -d ' ' -f 1)
+CHECKSUM=$(md5sum ${PROJECT_NAME}-${VERSION}-${GOOS}-${GOARCH}${EXT} | cut -d ' ' -f 1)
 
 curl \
   -X POST \
-  --data-binary @${PROJECT_NAME}-${VERSION}-${GOOS}${EXT} \
+  --data-binary @${PROJECT_NAME}-${VERSION}-${GOOS}-${GOARCH}${EXT} \
   -H 'Content-Type: application/binary' \
   -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-  "${UPLOAD_URL}?name=${PROJECT_NAME}-${VERSION}-${GOOS}${EXT}"
+  "${UPLOAD_URL}?name=${PROJECT_NAME}-${VERSION}-${GOOS}-${GOARCH}${EXT}"
 
 curl \
   -X POST \
