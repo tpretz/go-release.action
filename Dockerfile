@@ -1,5 +1,4 @@
 FROM golang:1.11-alpine
-MAINTAINER Atsushi Nagase <a@ngs.io> (https://ngs.io)
 
 LABEL "com.github.actions.name"="Go Release Binary"
 LABEL "com.github.actions.description"="Automate publishing Go build artifacts for GitHub releases"
