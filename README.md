@@ -5,7 +5,9 @@ Automate publishing Go build artifacts for GitHub releases through GitHub Action
 ```yaml
 # .github/workflows/release.yaml
 
-on: release
+on: 
+  release:
+    types: [published]
 name: Create Release
 jobs:
   release-linux-386:

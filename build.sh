@@ -2,6 +2,8 @@
 
 set -eux
 
+EVENT_DATA=$(cat $GITHUB_EVENT_PATH)
+#echo $EVENT_DATA | jq .
 PROJECT_ROOT="/go/src/github.com/${GITHUB_REPOSITORY}"
 PROJECT_NAME=$(basename $GITHUB_REPOSITORY)
 RELEASE_NAME=$(echo $EVENT_DATA | jq -r .release.tag_name)
