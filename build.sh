@@ -21,3 +21,4 @@ ln -s $GITHUB_WORKSPACE $PROJECT_ROOT
 cd $PROJECT_ROOT
 go get -v ./...
 go build -o ${NAME}${EXT} -ldflags="-X main.Version=${RELEASE_NAME} -s -w"
+goupx --brute ${NAME}${EXT}
