@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eux
+set -eu
 
 /build.sh
 
@@ -28,9 +28,10 @@ curl \
   -H "Authorization: Bearer ${GITHUB_TOKEN}" \
   "${UPLOAD_URL}?name=${NAME}${EXT}"
 
-curl \
-  -X POST \
-  --data $CHECKSUM \
-  -H 'Content-Type: text/plain' \
-  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-  "${UPLOAD_URL}?name=${NAME}_checksum.txt"
+# disable checksum uploading for time being
+#curl \
+#  -X POST \
+#  --data $CHECKSUM \
+#  -H 'Content-Type: text/plain' \
+#  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+#  "${UPLOAD_URL}?name=${NAME}_checksum.txt"

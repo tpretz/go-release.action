@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eux
+set -eu
 
 EVENT_DATA=$(cat $GITHUB_EVENT_PATH)
 #echo $EVENT_DATA | jq .
