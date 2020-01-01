@@ -23,7 +23,7 @@ CHECKSUM=$(md5sum ${PROJECT_NAME}-$VERSION-$GOOS${EXT} | cut -d ' ' -f 1)
 
 curl \
   -X POST \
-  --data-binary @${PROJECT_NAME}${EXT} \
+  --data-binary @${PROJECT_NAME}-$VERSION-$GOOS${EXT} \
   -H 'Content-Type: application/gzip' \
   -H "Authorization: Bearer ${GITHUB_TOKEN}" \
   "${UPLOAD_URL}?name=${NAME}"
