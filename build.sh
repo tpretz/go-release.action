@@ -21,6 +21,7 @@ ln -s $GITHUB_WORKSPACE $PROJECT_ROOT
 cd $PROJECT_ROOT
 
 GO111MODULE="on"
+CGO_ENABLED=0
 
 go build -o ${NAME}${EXT} -ldflags="-X main.Version=${RELEASE_NAME} -s -w"
 chmod +x ${NAME}${EXT}
