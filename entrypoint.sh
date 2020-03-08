@@ -18,7 +18,6 @@ if [ $GOOS == 'windows' ]; then
   EXT='.exe'
 fi
 
-# tar cvfz tmp.tgz "${PROJECT_NAME}${EXT}"
 CHECKSUM=$(md5sum ${NAME}${EXT} | cut -d ' ' -f 1)
 
 curl \
@@ -28,10 +27,9 @@ curl \
   -H "Authorization: Bearer ${GITHUB_TOKEN}" \
   "${UPLOAD_URL}?name=${NAME}${EXT}"
 
-# disable checksum uploading for time being
-#curl \
-#  -X POST \
-#  --data $CHECKSUM \
-#  -H 'Content-Type: text/plain' \
-#  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-#  "${UPLOAD_URL}?name=${NAME}_checksum.txt"
+curl \
+  -X POST \
+  --data $CHECKSUM \
+  -H 'Content-Type: text/plain' \
+  -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+  "${UPLOAD_URL}?name=${NAME}_checksum.txt"

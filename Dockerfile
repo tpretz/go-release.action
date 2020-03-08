@@ -7,12 +7,12 @@ LABEL "com.github.actions.color"="orange"
 
 LABEL "name"="Automate publishing Go build artifacts for GitHub releases through GitHub Actions"
 LABEL "version"="1.0.1"
-LABEL "repository"="http://github.com/ngs/go-release.action"
-LABEL "homepage"="http://ngs.io/t/actions/"
+LABEL "repository"="http://github.com/tpretz/go-release.action"
+LABEL "homepage"="http://github.com/tpretz/go-release.action"
 
-LABEL "maintainer"="Atsushi Nagase <a@ngs.io> (https://ngs.io)"
+LABEL "maintainer"="Thomas Pressnell <tom@pressnell.uk>"
 
-RUN apk add --no-cache curl jq git build-base upx
+RUN apk add --no-cache curl jq git build-base
 
 ADD entrypoint.sh /entrypoint.sh
 ADD build.sh /build.sh

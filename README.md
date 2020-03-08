@@ -7,16 +7,16 @@ Automate publishing Go build artifacts for GitHub releases through GitHub Action
 
 on: 
   release:
-    types: [published]
+    types: [created]
 name: Create Release
 jobs:
   release-linux-386:
     name: release linux/386
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: compile and release
-      uses: xackery/go-release.action@master
+      uses: tpretz/go-release.action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: "386"
@@ -26,9 +26,9 @@ jobs:
     name: release linux/amd64
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: compile and release
-      uses: xackery/go-release.action@master
+      uses: tpretz/go-release.action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: amd64
@@ -38,9 +38,9 @@ jobs:
     name: release darwin/386
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: compile and release
-      uses: xackery/go-release.action@master
+      uses: tpretz/go-release.action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: "386"
@@ -50,9 +50,9 @@ jobs:
     name: release darwin/amd64
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: compile and release
-      uses: xackery/go-release.action@master
+      uses: tpretz/go-release.action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: amd64
@@ -62,9 +62,9 @@ jobs:
     name: release windows/386
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: compile and release
-      uses: xackery/go-release.action@master
+      uses: tpretz/go-release.action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: "386"
@@ -74,9 +74,9 @@ jobs:
     name: release windows/amd64
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: compile and release
-      uses: xackery/go-release.action@master
+      uses: tpretz/go-release.action@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GOARCH: amd64

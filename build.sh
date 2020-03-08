@@ -4,7 +4,7 @@ set -eu
 
 EVENT_DATA=$(cat $GITHUB_EVENT_PATH)
 #echo $EVENT_DATA | jq .
-PROJECT_ROOT="/go/src/github.com/${GITHUB_REPOSITORY}"
+PROJECT_ROOT="/home/github.com/${GITHUB_REPOSITORY}"
 PROJECT_NAME=$(basename $GITHUB_REPOSITORY)
 RELEASE_NAME=$(echo $EVENT_DATA | jq -r .release.tag_name)
 NAME="${PROJECT_NAME}_${RELEASE_NAME}_${GOOS}_${GOARCH}"
@@ -19,9 +19,8 @@ mkdir -p $PROJECT_ROOT
 rmdir $PROJECT_ROOT
 ln -s $GITHUB_WORKSPACE $PROJECT_ROOT
 cd $PROJECT_ROOT
-go get -v ./...
+
+GO111MODULE="on"
+
 go build -o ${NAME}${EXT} -ldflags="-X main.Version=${RELEASE_NAME} -s -w"
-#if [ $GOOS == 'linux' ]; then
-#  upx --brute ${NAME}${EXT}
-#fi
 chmod +x ${NAME}${EXT}
