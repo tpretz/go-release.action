@@ -14,6 +14,7 @@ LABEL "maintainer"="Thomas Pressnell <tom@pressnell.uk>"
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   curl \
+  bash \
   wget \
   git \
   zip \
